@@ -61,7 +61,7 @@ function handleExtrinsic(
   newSystemTokenTransfers: SystemTokenTransfer[],
   accounts: Account[]
 } {
-  const extrinsicId = `${block}-${idx}`;
+  const extrinsicId = `${block.block.header.number}-${idx}`;
   const newExtrinsic = new Extrinsic(extrinsicId);
   newExtrinsic.hash = extrinsic.extrinsic.hash.toString();
   newExtrinsic.method = extrinsic.extrinsic.method.method;
