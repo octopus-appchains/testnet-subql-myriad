@@ -141,7 +141,7 @@ function handleCalls(
     }
   }
 
-  inner(substrateExtrinsic.extrinsic.method, substrateExtrinsic.extrinsic.hash.toString(), 0, true, 0)
+  inner(substrateExtrinsic.extrinsic.method, extrinsic.id, 0, true, 0)
   return list;
 }
 
