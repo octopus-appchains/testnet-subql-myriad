@@ -72,14 +72,14 @@ export function storeAppchainToNearTransfer(
     const [sender, receiver, amount] = data;
     newAppchainToNearTransfer.senderId = sender.toString();
     newAppchainToNearTransfer.receiver = Buffer.from(receiver.toHex().replace("0x", ""), "hex").toString("utf8");
-    newAppchainToNearTransfer.type = method;
+    newAppchainToNearTransfer.type = "Locked";
     newAppchainToNearTransfer.amount = BigInt(amount.toString().replaceAll(',', ''));
     newAppchainToNearTransfer.fee = BigInt(fee.replaceAll(',', ''));
   } else if (["AssetBurned", "Nep141Burned"].includes(method)) {
     const [assetId, sender, receiver, amount] = data;
     newAppchainToNearTransfer.senderId = sender.toString();
     newAppchainToNearTransfer.receiver = Buffer.from(receiver.toHex().replace("0x", ""), "hex").toString("utf8");
-    newAppchainToNearTransfer.type = method;
+    newAppchainToNearTransfer.type = "Nep141Burned";
     newAppchainToNearTransfer.assetId = Number(assetId.toString().replaceAll(',', ''));
     newAppchainToNearTransfer.amount = BigInt(amount.toString().replaceAll(',', ''));
     newAppchainToNearTransfer.fee = BigInt(fee.replaceAll(',', ''));
@@ -87,7 +87,7 @@ export function storeAppchainToNearTransfer(
     const [collection, item, sender, receiver] = data;
     newAppchainToNearTransfer.senderId = sender.toString();
     newAppchainToNearTransfer.receiver = Buffer.from(receiver.toHex().replace("0x", ""), "hex").toString("utf8");
-    newAppchainToNearTransfer.type = method;
+    newAppchainToNearTransfer.type = "NonfungibleLocked";
     newAppchainToNearTransfer.collection = BigInt(collection.toString().replaceAll(',', ''));
     newAppchainToNearTransfer.item = BigInt(item.toString().replaceAll(',', ''));
     newAppchainToNearTransfer.fee = BigInt(fee.replaceAll(',', ''));
